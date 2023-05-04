@@ -7,14 +7,19 @@ import {useTable} from "@/context/table_context";
 export default function Home() {
 
   //States
-   const {table} = useTable()
-   const [isDialogOpen, setOpen] = useState(false);
+   const {table} = useTable() // table context
+   const [isDialogOpen, setOpen] = useState(false); // for dialog visibility
+   const [dialogSwitch, setDialogSwitch]  = useState(false) // for switch to change between adding relations or adding entities
+
   //State handlers
   const handleOpen = () => {
     setOpen(true);
   }
   const handleClose = () => {
     setOpen(false);
+  }
+  const handleDialogSwitch = () => {
+       setDialogSwitch(!dialogSwitch)
   }
 
   return (
@@ -27,8 +32,8 @@ export default function Home() {
           handleOpen
         }> Let&apos;s get started
         </button>
-        <Dialog open={isDialogOpen} onClose={handleClose} title={"Create ontologies"}>
-          <Form open = {isDialogOpen} onSubmit={handleClose}/>
+        <Dialog open={isDialogOpen} onClose={handleClose} title={"Create ontologies"} isSwitch={dialogSwitch} setSwitch={handleDialogSwitch} >
+          <Form open = {isDialogOpen} onSubmit={handleClose} switch={dialogSwitch}/>
         </Dialog>
         <Table data={table}></Table>
       </main>

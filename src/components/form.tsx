@@ -8,7 +8,9 @@ export type FormState = {
     predicate: string;
 };
 
-const Form = (props: {open: boolean ,onSubmit:
+
+
+const Form = (props: {switch:boolean, open: boolean ,onSubmit:
 () => void
 }) => {
     const {table, insertToTable, deleteFromTable} = useTable()
@@ -49,7 +51,7 @@ const Form = (props: {open: boolean ,onSubmit:
                 <form onSubmit={handleSubmit}>
                     <div>
                         <label className={"text-xl text-black font-bold px-10 py-10 m-2 "}
-                               htmlFor="name">Subject</label>
+                               htmlFor="name">{props.switch ? "Subject" : "Relation"}</label>
                         <input
                             className={"text-black px-1 py-1 m-2 "}
                             id="subject"
@@ -61,7 +63,7 @@ const Form = (props: {open: boolean ,onSubmit:
                     </div>
                     <div>
                         <label className={"text-xl text-black font-bold px-10 py-10 m-2  "}
-                               htmlFor="classType">Object</label>
+                               htmlFor="classType">{props.switch ? "Object" : "Domain"}</label>
                         <input
                             className={" text-black px-1 py-1 m-2 justify-end"}
                             id="object"
@@ -73,7 +75,7 @@ const Form = (props: {open: boolean ,onSubmit:
                     </div>
                     <div>
                         <label className={"text-xl text-black font-bold px-10 py-10 m-2  "}
-                               htmlFor="classType">Predicate</label>
+                               htmlFor="classType">{props.switch ? "Predicate" : "Range"}</label>
                         <input
                             className={" text-black px-1 py-1 m-2 justify-end"}
                             id="predicate"
