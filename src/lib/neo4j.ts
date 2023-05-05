@@ -3,9 +3,8 @@ import {relation} from "@/data/types";
 
 const NEO4J_PASSWORD = process.env.NEO4J_PASSWORD;
 const NEO4J_USERNAME = process.env.NEO4J_USERNAME;
-const NEO4J_URI = process.env.NEO4J_URI
 const driver = neo4j.driver(
-    NEO4J_URI!,
+   "neo4j+s://bb8f6cf4.databases.neo4j.io" ,
     neo4j.auth.basic(
         NEO4J_USERNAME!,
         NEO4J_PASSWORD!
